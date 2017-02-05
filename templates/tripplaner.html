@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+  <form class="" action="/post_planner/" method="POST">
+    {% csrf_token %}
+    <div class="trplanner">
+
+      <h1 class="tripplanner1">Trip Planner</h1>
+      <div class="container category">
+        <div class="col-md-12 col-sm 12 col-xs-12 tblocks">
+          <div class="col-md-5 col-sm-5 col-xs-12 leftside"><span></span>1. Enter the period, when you want to go on tour</div>
+          <div class="col-md-7 col-sm-7  col-xs-12 rightside ">
+            <div class="categorry">
+              <div class="col-md-6 col-sm-6 col-xs-6 padd0 dm">
+                <h4 class="ttitle">From</h4>
+                <p>
+                  <input id="fromdate" type="text" name="fromdate" required>
+                </p>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6 padd0 dm">
+                <h4 class="ttitle">Until</h4>
+                <p>
+                  <input id="todate" type="text" name="todate" required>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm 12 col-xs-12 tblocks">
+          <div class="col-md-5 col-sm-5 col-xs-12 leftside"><span></span>2. Please, set the number of people</div>
+          <div class="col-md-7 col-sm-7  col-xs-12 rightside">
+            <div class="categorry cat">
+              <input type="number" id="people" name="people" class="number" value="1" min="1" max="99">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm 12 col-xs-12 tblocks">
+          <div class="col-md-5 col-sm-5 col-xs-12 leftside"><span></span>3. Are there any children?</div>
+          <div class="col-md-7 col-sm-7 col-xs-12 rightside">
+            <div class="categorry">
+              <div class="col-md-6 col-sm-6 col-xs-6 padd0 cat"><span class="yes">Yes,there is</span>
+                <input type="number" id="countchildren" value="1" min="1" max="99" name="countchildren">
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6 padd0 not1 cat1">
+                <input type="radio" class="radio not1" id="no" name="no" value="no">
+                <label for="no" class="labelfont">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm 12 col-xs-12 tblocks">
+          <div class="col-md-5 col-sm-5 col-xs-12 leftside "><span></span>4. Choose the type of tour, that you are interested</div>
+          <div class="col-md-7 col-sm-7  col-xs-12 rightside">
+            <div class="categorry">
+              <select name="category" id="category" class="chs cat">
+                <option value="select"> Select an option</option>
+                  {% for i in tours %}
+                      <option value="{{ i.id }}"> {{ i.title }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm 12 col-xs-12 tblocks">
+          <div class="col-md-5 col-sm-5 col-xs-12 leftside "><span></span>5. Category of tour</div>
+          <div class="col-md-7 col-sm-7  col-xs-12 rightside">
+            <div class="categorry cat">
+              <div class="col-md-4 col-sm-4 col-xs-6 padd0 radio-trigger">
+                <input type="tradio" name="tour-cat" class="radio" id="luxe" value="Luxe">
+                <label for="luxe" class="labelfont">Luxe</label>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 padd0 radio-trigger">
+                <input type="tradio" name="tour-cat" class="radio" value="Standart" id="standart">
+                <label for="standart" class="labelfont">Standart</label>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 padd0 radio-trigger">
+                <input type="tradio" name="tour-cat" value="Budget" class="radio" id="budget">
+                <label for="budget" class="labelfont">Budget</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="hotels">
+        {% for i in hotels %}
+        <div class="hitems him1">
+          <div class="hotelimg"><img src="{{ i.image.url }}" alt="">
+            <div class="choosehotel">
+              <input type="radio" name="hotel1" value="{{ i.id }}" id="hotel{{ i.id }}">
+              <div id="hotel{{ i.id }}">
+                <label for="hotel{{ i.id }}" class="chooses">Choose hotel</label>
+                <button type="button" class="moreabout" href="{{ i.url }}">Read more</button>
+              </div>
+            </div>
+          </div>
+          <div class="hotelrating">{{ i.name }}
+            <p><i class="fa fa-star starss" aria-hidden="true"></i><i class="fa fa-star starss" aria-hidden="true"></i><i class="fa fa-star starss" aria-hidden="true"></i><i class="fa fa-star starss" aria-hidden="true"></i><i class="fa fa-star starss" aria-hidden="true"></i></p>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+    <div class="container choosetransport">
+      <h3>Transport<span class="ggray"> (Luxe)</span></h3>
+      <p>Choose transport</p>
+      <div class="transportcategory">
+        <label for="transport1" class="transport transport1">
+          <input type="radio" name="hotel" value="1" id="transport1">
+          <div class="transportprice">40$ <span class="priceright">/day</span></div>
+        </label>
+        <label for="transport2" class="transport transport2">
+          <input type="radio" name="hotel" value="2" id="transport2">
+          <div class="transportprice">40$ <span class="priceright">/day</span></div>
+        </label>
+        <label for="transport3" class="transport transport3">
+          <input type="radio" name="hotel" value="3" id="transport3">
+          <div class="transportprice">40$ <span class="priceright">/day</span></div>
+        </label>
+        <label for="transport4" class="transport transport4">
+          <input type="radio" name="hotel" value="4" id="transport4">
+          <div class="transportprice">40$ <span class="priceright">/day</span></div>
+        </label>
+        <label for="transport5" class="transport transport5">
+          <input type="radio" name="hotel" value="5" id="transport5">
+          <div class="transportprice">40$ <span class="priceright">/day</span></div>
+        </label>
+      </div>
+    </div>
+    <div class="container food">
+      <h3>Food<span class="ggray"> (Luxe)</span></h3>
+      <p>Choose food in hotel</p>
+      <div class="col-md-12 col-sm-12 col-xs-12 footdtype">
+        <div class="tof">
+          <div class="col-md-4 col-sm-4 col-xs-12 radio-trigger">
+            <input type="radio" class="radio" id="radio1" name="f1" value="Full board">
+            <label for="radio1" class="labelfont">Full Board (FB)</label>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 radio-trigger">
+            <input type="radio" class="radio" id="radio2" name="f2" value="Half board">
+            <label for="radio2" class="labelfont">Half Board (HB)</label>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 radio-trigger">
+            <input type="radio" class="radio" id="radio3" name="f3" value="Bed breakfast">
+            <label for="radio3" class="labelfont">Bed Breakfast (BB)</label>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12 radio-trigger">
+            <input type="radio" class="radio" id="radio4" name="f4" value="Room only">
+            <label for="radio4" class="labelfont">Room Only</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container personalinfo">
+      <h2 class="presonatitle">Personal Inofrmation</h2>
+
+      <p class="presonatitle presonatitle1">Please fill out all required information to help us to contact with you</p>
+      <div class="persinfo">
+        <input type="text" id="name" name="name" class="persinfotext" placeholder="Name" required>
+        <p></p>
+        <input type="text" id="email" name="email" class="persinfotext" placeholder="E-mail">
+        <p></p>
+          <input type="text" id="country" name="country" class="persinfotext" placeholder="country" required>
+        <p></p>
+        <input type="text" id="phone" name="phone" class="personphone" placeholder="Phone" required>
+        <p></p>
+        <textarea name="comment" id="comment" cols="30" rows="10" class="perscomment" placeholder="Write your comment..."></textarea>
+        <p></p>
+        <input type="submit" class="smt" value="Save my trips">
+      </div>
+    </div>
+  </form>
+{% endblock %}

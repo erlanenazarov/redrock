@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% for i in blogs %}
+        <div class="container-fluid blogtitle">
+            <div class="container btitle">
+                {{ i.title }}
+            </div>
+        </div>
+
+        <div class="container blogcontent">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ i.text|safe }}
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="blogslider">
+                    {% for j in images %}
+                        {% if i.id == j.blog_id %}
+                            <div class="bslideritems"><img src="{{ j.image.url }}" alt=""></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="blogsliderthumb">
+                    {% for j in images %}
+                        {% if i.id == j.blog_id %}
+                            <div class="blogsliderthumbitems"><img src="{{ j.image.url }}" alt=""></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container-fluid comments1">
+        <div class="container">
+            <div class="comments">
+                <div class="col-md-1 col-sm-1 col-xs-4">COMMENTS</div>
+                <div class="col-md-11 col-sm-11 col-xs-8 count">4</div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid comments12">
+        <div class="container">
+            <div class="comments2">
+                <div class="col-md-2 col-sm-2 col-xs-2 excomm"><img src="{% static 'img/comim.png' %}" alt=""></div>
+                <div class="col-md-10 col-sm-10 col-xs-10 excomm">
+                    <div class="col-md-12 col-sm-12 col-xs-12 auth">
+                        <div class="col-md-6 col-sm-6 col-xs-6 aut">
+                            <h4 class="author">John Brown <img src="{% static 'img/facebook.png' %}" alt=""></h4></div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h5 class="datime">5 days ago</h5></div>
+                    </div>
+                    <p class="comm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                        ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <form action="">
+                        <button type="button" class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
+                        </button>
+                        <button type="button" class="reply">Reply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

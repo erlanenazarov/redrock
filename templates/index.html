@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Kochevnik</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+<!-- Header + Slider -->
+<div class="container-fliud cnt">
+    <div class="container ch">
+        <div class="contacts">+<b> </b>996<b> </b>312<b> </b>986<b> </b>545<b> </b>
+            <a href="#">
+                <button type="button" class="cbk">CALLBACK</button>
+            </a>
+        </div>
+        <nav class="navbar navbar-default kochnav">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed hmbg" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand brnd" href="#"><img src="{% static 'img/logo.png' %}" alt="">
+                    <p class="logo">Kochevnik.kg</p>
+                    <p class="sublogo">Your personal airline</p>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right rightnb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/things_todo/">Things To-Do</a></li>
+                    <li><a href="/trip_planner/">Trip Planner</a></li>
+                    <li><a href="/tours/">Tours</a></li>
+                    <li><a href="/gallery/">Gallery</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about_us/">About Us</a></li>
+                    <li><a href="/contacts/">Contacts</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </div>
+</div>
+<div id="carousel-example-generic" class="carousel slide slide1" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators cin">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="{{ first.image.url }}" alt="...">
+            <div class="container caption">
+                <div class="carousel-caption capt">
+                    <h1 class="cp">{{ first.title }}</h1>
+                    <p class="subc">{{ first.description }} </p>
+                </div>
+            </div>
+        </div>
+            {% for first in slider %}
+        <div class="item">
+            <img src="{{ first.image.url }}" alt="...">
+            <div class="container caption">
+                <div class="carousel-caption capt">
+                    <h1 class="cp">{{ first.title }}</h1>
+                    <p class="subc">{{ first.description }} </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- Header + Slider end -->
+<!-- Header Block -->
+<div class="container-fluid block1">
+    <div class="container blockk1">
+        <div class="col-md-6 col-sm-6 imgdescr">
+            <div class="describe">
+                {{ main.description }}
+                <p>
+                    <a href="{{ main.url }}" target="_blank">
+                        <button class="cbk cbk1" type="button">DISCOVER</button>
+                    </a>
+                </p>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-sm-6 imgdescr1" style="background-image: url('{{ main.image.url }}')"></div>
+    </div>
+</div>
+<!-- Header Block End-->
+<!-- Things to do -->
+    <div class="container-fluid things">
+        <div class="container gallery">
+            <h1 class="todo">THING TO-DO</h1>
+            <p class="lorem">Lorem ipsum dolor sit</p>
+            <div class="gblock1">
+                {% for i in thingstodo %}
+                <div class="col-md-6 galleryimg hunt" style="background-image: url('{{ i.image.url }}')">
+                    <div class="buts1">
+                        <a href="/things_to_do/{{ i.id }}/">
+                            <button type="button" class="more">{{ i.name }}</button>
+                            <p class="view">VIEW TOURS <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="gblock2">
+                {% for i in other %}
+                <div class="col-md-3 galleryimg stariki">
+                    <div class="buts1">
+                        <a href="/things_to_do/{{ i.id }}/">
+                            <button type="button" class="more">{{ i.name }}</button>
+                            <p class="view">VIEW TOURS <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<!-- Things to do's End -->
+<div class="container-fluid tripplanner">
+    <div class="container ">
+        <div class="col-md-12 des">
+            <h1 class="todo tp">TRIP PLANNER</h1>
+            <p class="lorem cyot">Create you own Tour</p>
+        </div>
+        <a href="">
+            <button type="button" class="cbk mot">MY OWN TOUR</button>
+        </a>
+    </div>
+</div>
+<div class="container-fluid poptours">
+    <div class="container pptours">
+        <h1 class="todo pt">POPULAR TOURS</h1>
+        <p class="lorem">Lorem ipsum dolor sit</p>
+        <div class="pblock">
+            {% for i in tours %}
+                {% if i.down == True %}
+                    <div class="col-md-3 col-sm-3 ph1 photos up photos1" style="background: url('{{ i.image.url }}')">
+                        <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
+                        <div class="pacpt">
+                            <h4 class="ttle">{{ i.title }}</h4>
+                            <p>{{ i.short_description }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-md-3 col-sm-3  ph2 photos photos1" style="background: url('{{ i.image.url }}')">
+                        <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
+                        <div class="pacpt">
+                            <h4 class="ttle">{{ i.title }}</h4>
+                            <p>{{ i.short_description }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <a href="/tours/" class="vat">ALL TOURS<i class="fa fa-chevron-right vatar" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid trp">
+    <div class="container travphoto">
+        <div class="trps">
+            <h1 class="todo">TRAVELER PHOTOS</h1>
+            <p class="lorem">Sed ut perspiciatis unde</p>
+        </div>
+
+        <div class="slider2">
+            {% for i in media %}
+            <div class="items"><img src="{{ i.image.url }}" alt="">
+                <div class="scapt">
+                    <h4 class="sttle">{{ i.name }}</h4>
+                    <p>{{ i.author }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="" class="vat">ALL PHOTOS<i class="fa fa-chevron-right vatar" aria-hidden="true"></i></a>
+</div>
+<div class="container-fluid blog">
+    <div class="container nbslider">
+        <div class="blg">
+            <h1 class="todo trps">NEWS & BLOG</h1>
+            <div class="slider3">
+                {% for i in blogs %}
+                <div class="items3">
+                    <img src="{{ i.get_image.image.url }}" alt="">
+                    <div class="bcapt">
+                        <h4>{{ i.title }}</h4>
+                        <p>Describe</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="container map1">
+        <h1 class="todo trps">MAP OF ATRACCTIONS</h1>
+        <div class="mapot"></div>
+    </div>
+<div class="container-fluid FAQ">
+    <div class="container  trps">
+        <h1 class="todo">ANY QUESTIONS?</h1>
+        <p class="ff sublogo">Fill the form below and get free consultation</p>
+        <div class=" col-md-12 col-sm-12 col-xs-12 fillform">
+            <form action="submit">
+                <input type="text" placeholder="Phone" class="udata">
+                <p>
+                    <input type="text" placeholder="E-mail" class="udata">
+                </p>
+                <textarea class="fq" name="" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid ftr">
+    <div class="container ftr1">
+        <div class="col-md-2 col-sm-4 col-xs-12 bord "><img src="{% static 'img/logo1.png' %}" alt=""></div>
+        <div class="col-md-3 col-xs-4 col-sm-8 bord bord1">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <ul class="rbold">
+                    <li>HOME</li>
+                    <li>THING TO DO</li>
+                    <li>TRIP PLANNER</li>
+                    <li>TOURS</li>
+                    <li>GALLERY</li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <ul>
+                    <li>About us</li>
+                    <li>Guides</li>
+                    <li>Partners</li>
+                    <li>Contacts</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-6 social bord">
+
+            <ul>
+                <h4 class="rbold">FOLLOW US</h4>
+                <li><i class="fa fa-facebook ficons" aria-hidden="true"></i>Facebook</li>
+                <li><i class="fa fa-instagram ficons" aria-hidden="true"></i>Instargram</li>
+                <li><i class="fa fa-vk ficons" aria-hidden="true"></i>Vkontakte</li>
+                <li><i class="fa fa-odnoklassniki ficons" aria-hidden="true"></i>Odnoklassniki</li>
+            </ul>
+        </div>
+        <div class="col-md-5 col-sm-6 col-xs-6 bord">
+            <h4 class="rbold">SUBCRIBTION TO NEWSLETTER</h4>
+            <p>Enter your e-mail to know the latest news about traveling in Kyrgyzstan</p>
+            <form action="">
+                <input type="text" class="udata" placeholder="Enter your E-mail">
+                <button type="submit" class="cbk">SUBSCRIBE</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.slider2').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                index: 2,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            slidesToShow: 2,
+                        }
+    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+    }
+
+  ]
+            });
+            $('.slider3').slick({
+                slidesToShow: 3,
+                index: 2,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                prevArrow: '<button type="button" class="slprev"></button>',
+                nextArrow: '<button type="button" class="slnext"></button>',
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            slidesToShow: 2,
+                        }
+    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+    }
+
+  ]
+            });
+            $('.slider4').slick({
+                slidesToShow: 4,
+                index: 2,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                prevArrow: '<button type="button" class="prev"></button>',
+                nextArrow: '<button type="button" class="next"></button>',
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            slidesToShow: 2,
+                        }
+    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: false,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+    }
+
+  ]
+            });
+            $('.watcsslider').slick({
+                arrows: true,
+                slidesToShow: 1,
+                autoplay: false,
+                autoplaySpeed: 2000,
+                prevArrow: '<button type="button" class="whatcsprev"></button>',
+                nextArrow: '<button type="button" class="whatcsnext"></button>',
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false,
+                        }
+    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false,
+                        }
+    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            arrows: false,
+                        }
+    }
+  ]
+            });
+            $('.blogslider').slick({
+                slidesToShow: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.blogsliderthumb'
+            });
+            $('.blogsliderthumb').slick({
+                arrows: true,
+                slidesToShow: 4,
+                asNavFor: '.blogslider',
+                dots: false,
+                focusOnSelect: true
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="container-fluid abwall">
+            <div class="container abcaption">
+                <h1 class="lorem abcapt">About us</h1>
+                <h1 class="todo abcapt abcapt1">YOUR PERSONAL AIRILNE</h1></div>
+        </div>
+        <div class="container since">
+            <h3 class="sinc">SINCE 2011</h3>
+            <p class="abcompany">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="container number-facts">
+            <h3 class="sinc">NUMBER/FACTS</h3>
+            <div class="col-md-3 col-sm-3 col-xs-3 todo numbers">5
+                <p class="numdescr">Year of experience</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 todo numbers">60
+                <p class="numdescr">Partners</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 todo numbers">1000
+                <p class="numdescr">Customers</p>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 todo last">10
+                <p class="numdescr">Weekly tours</p>
+            </div>
+        </div>
+        <div class="container-fluid our-team">
+            <div class="container outeam">
+                {% for i in residents %}
+                <div class="col-md-3 col-sm-3 col-xs-12 portrait first">
+                    <div class="team">
+                        <h5 class="name">{{ i.name }}</h5>
+                        <p>{{ i.position }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container whatcs">
+            <div class="watcsslider">
+                {% for i in rates %}
+                <div class="whatcsitem"><div class="whatcscaption">
+                    {{ i.text }} <p class="rating">
+                </p> <p class="primg"><img src="{% static 'img/profile.png' %}" alt=""></p></div></div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}

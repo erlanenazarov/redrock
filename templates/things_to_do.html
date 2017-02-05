@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container-fluid things">
+        <div class="container gallery">
+            <h1 class="todo">THING TO-DO</h1>
+            <p class="lorem">Lorem ipsum dolor sit</p>
+            <div class="gblock2">
+                {% for i in tours %}
+                <div class="col-md-3 galleryimg stariki" style="background-image: url({{ i.image.url }})">
+                    <div class="buts1">
+                        <a href="/things_to_do/{{ i.id }}/">
+                            <button type="button" class="more">{{ i.name }}</button>
+                            <p class="view">VIEW TOURS <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+<div class="container-fluid FAQ">
+    <div class="container  trps">
+        <h1 class="todo">ANY QUESTIONS?</h1>
+        <p class="ff sublogo">Fill the form below and get free consultation</p>
+        <div class=" col-md-12 col-sm-12 col-xs-12 fillform">
+            <form action="submit">
+                <input type="text" placeholder="Phone" class="udata">
+                <p>
+                    <input type="text" placeholder="E-mail" class="udata">
+                </p>
+                <textarea class="fq" name="" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

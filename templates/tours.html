@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="container-fluid poptours poptours1">
+    <div class="container">
+        <h1 class="todo pt">TOURS</h1>
+        <div class="filter">
+            <form action="">Type of tour
+
+                <select id="my_selection">
+                    <option value="x" href="/tours/">All tours</option>
+                    {% for i in categories %}
+                        <option value="x" href="/tours/category/{{ i.id }}/">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        <div class="pblock">
+            {% for i in tours %}
+                {% if i.down == True %}
+                    <div class="col-md-3 col-sm-3 ph1 photos up photos1" style="background: url('{{ i.image.url }}')">
+                        <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
+                        <div class="pacpt">
+                            <h4 class="ttle">{{ i.title }}</h4>
+                            <p>{{ i.short_description }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-md-3 col-sm-3  ph2 photos photos1" style="background: url('{{ i.image.url }}')">
+                        <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
+                        <div class="pacpt">
+                            <h4 class="ttle">{{ i.title }}</h4>
+                            <p>{{ i.short_description }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="container pphotos">
+            <h1 class="todo trps">TRAVELER PHOTO</h1>
+            <div class="phblock1">
+                {% for i in first %}
+                    <div class="col-md-3 col-sm-3 galimg" style="background-image: url('{{ i.image.url }}')">
+                        <div class="pacpt tpp">
+                            <h4 class="ttle">{{ i.name }}</h4>
+                            <p>By {{ i.author }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-md-6 col-sm-6 galimg" style="background-image: url('{{ third.image.url }}')">
+                    <div class="pacpt tpp">
+                        <h4 class="ttle">{{ third.name }}</h4>
+                        <p>By {{ third.author }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="phblock2">
+                <div class="col-md-6 col-sm-6 galimg" style="background-image: url('{{ fourth.image.url }}')">
+                    <div class="pacpt tpp">
+                        <h4 class="ttle">{{ fourth.name }}</h4>
+                        <p>By {{ fourth.author }}</p>
+                    </div>
+                </div>
+                {% for i in fifth %}
+                    <div class="col-md-3 col-sm-3 galimg" style="background-image: url('{{ i.image.url }}')">
+                        <div class="pacpt tpp">
+                            <h4 class="ttle">{{ i.name }}</h4>
+                            <p>By {{ i.author }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

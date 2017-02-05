@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+        <div class="container-fluid wallp" style="background-image: url('{{ thing.image.url }}')">
+        <div class="container todocaption">
+            <h1 class="todo abcapt abcapt1">{{ thing.name }}</h1>
+            <p class="subcapt">{{ thing.description }}</p>
+        </div>
+    </div>
+    <div class="container-fluid poptours poptours1">
+        <div class="container">
+            <h1 class="todo pt">TOURS</h1>
+            <div class="pblock">
+                {% for i in tours %}
+                <div class="col-md-3 col-sm-3 ph1 photos up photos1" style="background: url('{{ i.image.url }}')">
+                        <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
+                        <div class="pacpt">
+                            <h4 class="ttle">{{ i.title }}</h4>
+                            <p>{{ i.short_description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+<div class="container-fluid FAQ">
+    <div class="container  trps">
+        <h1 class="todo">ANY QUESTIONS?</h1>
+        <p class="ff sublogo">Fill the form below and get free consultation</p>
+        <div class=" col-md-12 col-sm-12 col-xs-12 fillform">
+            <form action="submit">
+                <input type="text" placeholder="Phone" class="udata">
+                <p>
+                    <input type="text" placeholder="E-mail" class="udata">
+                </p>
+                <textarea class="fq" name="" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
