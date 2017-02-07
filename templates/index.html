@@ -82,16 +82,16 @@
                 </div>
             </div>
         </div>
-            {% for first in slider %}
-        <div class="item">
-            <img src="{{ first.image.url }}" alt="...">
-            <div class="container caption">
-                <div class="carousel-caption capt">
-                    <h1 class="cp">{{ first.title }}</h1>
-                    <p class="subc">{{ first.description }} </p>
+        {% for first in slider %}
+            <div class="item">
+                <img src="{{ first.image.url }}" alt="...">
+                <div class="container caption">
+                    <div class="carousel-caption capt">
+                        <h1 class="cp">{{ first.title }}</h1>
+                        <p class="subc">{{ first.description }} </p>
+                    </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 </div>
@@ -115,12 +115,12 @@
 </div>
 <!-- Header Block End-->
 <!-- Things to do -->
-    <div class="container-fluid things">
-        <div class="container gallery">
-            <h1 class="todo">THING TO-DO</h1>
-            <p class="lorem">Lorem ipsum dolor sit</p>
-            <div class="gblock1">
-                {% for i in thingstodo %}
+<div class="container-fluid things">
+    <div class="container gallery">
+        <h1 class="todo">THING TO-DO</h1>
+        <p class="lorem">Lorem ipsum dolor sit</p>
+        <div class="gblock1">
+            {% for i in thingstodo %}
                 <div class="col-md-6 galleryimg hunt" style="background-image: url('{{ i.image.url }}')">
                     <div class="buts1">
                         <a href="/things_to_do/{{ i.id }}/">
@@ -129,10 +129,10 @@
                         </a>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-            <div class="gblock2">
-                {% for i in other %}
+            {% endfor %}
+        </div>
+        <div class="gblock2">
+            {% for i in other %}
                 <div class="col-md-3 galleryimg stariki">
                     <div class="buts1">
                         <a href="/things_to_do/{{ i.id }}/">
@@ -141,10 +141,10 @@
                         </a>
                     </div>
                 </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
+</div>
 
 <!-- Things to do's End -->
 <div class="container-fluid tripplanner">
@@ -168,15 +168,20 @@
                     <div class="col-md-3 col-sm-3 ph1 photos up photos1" style="background: url('{{ i.image.url }}')">
                         <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
                         <div class="pacpt">
-                            <h4 class="ttle">{{ i.title }}</h4>
+                            <a href="/tour/{{ i.id }}/">
+                                <h4 class="ttle">{{ i.title }}</h4>
+                            </a>
                             <p>{{ i.short_description }}</p>
                         </div>
                     </div>
                 {% else %}
-                    <div class="col-md-3 col-sm-3  ph2 photos photos1" style="background: url('{{ i.image.url }}')">
+                    <div class="col-md-3 col-sm-3  ph2 photos photos1"
+                         style="background: url('{{ i.image.url }}')">
                         <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
                         <div class="pacpt">
-                            <h4 class="ttle">{{ i.title }}</h4>
+                            <a href="/tour/{{ i.id }}/">
+                                <h4 class="ttle">{{ i.title }}</h4>
+                            </a>
                             <p>{{ i.short_description }}</p>
                         </div>
                     </div>
@@ -195,16 +200,16 @@
 
         <div class="slider2">
             {% for i in media %}
-            <div class="items"><img src="{{ i.image.url }}" alt="">
-                <div class="scapt">
-                    <h4 class="sttle">{{ i.name }}</h4>
-                    <p>{{ i.author }}</p>
+                <div class="items"><img src="{{ i.image.url }}" alt="">
+                    <div class="scapt">
+                        <h4 class="sttle">{{ i.name }}</h4>
+                        <p>{{ i.author }}</p>
+                    </div>
                 </div>
-            </div>
             {% endfor %}
         </div>
     </div>
-    <a href="" class="vat">ALL PHOTOS<i class="fa fa-chevron-right vatar" aria-hidden="true"></i></a>
+    <a href="/gallery/" class="vat">ALL PHOTOS<i class="fa fa-chevron-right vatar" aria-hidden="true"></i></a>
 </div>
 <div class="container-fluid blog">
     <div class="container nbslider">
@@ -212,22 +217,22 @@
             <h1 class="todo trps">NEWS & BLOG</h1>
             <div class="slider3">
                 {% for i in blogs %}
-                <div class="items3">
-                    <img src="{{ i.get_image.image.url }}" alt="">
-                    <div class="bcapt">
-                        <h4>{{ i.title }}</h4>
-                        <p>Describe</p>
+                    <div class="items3">
+                        <img src="{{ i.get_image.image.url }}" alt="">
+                        <div class="bcapt">
+                            <h4>{{ i.title }}</h4>
+                            <p>Describe</p>
+                        </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 </div>
-  <div class="container map1">
-        <h1 class="todo trps">MAP OF ATRACCTIONS</h1>
-        <div class="mapot"></div>
-    </div>
+<div class="container map1">
+    <h1 class="todo trps">MAP OF ATRACCTIONS</h1>
+    <div class="mapot"></div>
+</div>
 <div class="container-fluid FAQ">
     <div class="container  trps">
         <h1 class="todo">ANY QUESTIONS?</h1>
@@ -290,142 +295,142 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.slider2').slick({
-                centerMode: true,
-                centerPadding: '60px',
-                slidesToShow: 3,
-                index: 2,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            slidesToShow: 2,
-                        }
-    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            slidesToShow: 1
-                        }
-    }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.slider2').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
+            index: 2,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: false,
+                        centerPadding: '40px',
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: false,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
 
-  ]
-            });
-            $('.slider3').slick({
-                slidesToShow: 3,
-                index: 2,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                prevArrow: '<button type="button" class="slprev"></button>',
-                nextArrow: '<button type="button" class="slnext"></button>',
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            slidesToShow: 2,
-                        }
-    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            slidesToShow: 1
-                        }
-    }
-
-  ]
-            });
-            $('.slider4').slick({
-                slidesToShow: 4,
-                index: 2,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                prevArrow: '<button type="button" class="prev"></button>',
-                nextArrow: '<button type="button" class="next"></button>',
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            slidesToShow: 2,
-                        }
-    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            arrows: false,
-                            centerMode: false,
-                            centerPadding: '40px',
-                            slidesToShow: 1
-                        }
-    }
-
-  ]
-            });
-            $('.watcsslider').slick({
-                arrows: true,
-                slidesToShow: 1,
-                autoplay: false,
-                autoplaySpeed: 2000,
-                prevArrow: '<button type="button" class="whatcsprev"></button>',
-                nextArrow: '<button type="button" class="whatcsnext"></button>',
-                responsive: [
-                    {
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            arrows: false,
-                        }
-    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            arrows: false,
-                        }
-    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            arrows: false,
-                        }
-    }
-  ]
-            });
-            $('.blogslider').slick({
-                slidesToShow: 1,
-                arrows: false,
-                fade: true,
-                asNavFor: '.blogsliderthumb'
-            });
-            $('.blogsliderthumb').slick({
-                arrows: true,
-                slidesToShow: 4,
-                asNavFor: '.blogslider',
-                dots: false,
-                focusOnSelect: true
-            });
+            ]
         });
-    </script>
+        $('.slider3').slick({
+            slidesToShow: 3,
+            index: 2,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            prevArrow: '<button type="button" class="slprev"></button>',
+            nextArrow: '<button type="button" class="slnext"></button>',
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: false,
+                        centerPadding: '40px',
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: false,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+
+            ]
+        });
+        $('.slider4').slick({
+            slidesToShow: 4,
+            index: 2,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            prevArrow: '<button type="button" class="prev"></button>',
+            nextArrow: '<button type="button" class="next"></button>',
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        arrows: false,
+                        centerMode: false,
+                        centerPadding: '40px',
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        arrows: false,
+                        centerMode: false,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+
+            ]
+        });
+        $('.watcsslider').slick({
+            arrows: true,
+            slidesToShow: 1,
+            autoplay: false,
+            autoplaySpeed: 2000,
+            prevArrow: '<button type="button" class="whatcsprev"></button>',
+            nextArrow: '<button type="button" class="whatcsnext"></button>',
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                    }
+                }
+            ]
+        });
+        $('.blogslider').slick({
+            slidesToShow: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.blogsliderthumb'
+        });
+        $('.blogsliderthumb').slick({
+            arrows: true,
+            slidesToShow: 4,
+            asNavFor: '.blogslider',
+            dots: false,
+            focusOnSelect: true
+        });
+    });
+</script>
 </body>
 
 </html>

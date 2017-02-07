@@ -180,7 +180,7 @@ $(document).ready(function () {
         var input = $('input', $(obj));
         var label = $('label', $(obj));
         $(label).removeClass('active');
-        $(input).removeAttr('checked');
+        // $(input).removeAttr('checked');
       });
     }
 
@@ -191,6 +191,35 @@ $(document).ready(function () {
       $(input).attr('checked', "true");
       $(label).addClass('active');
     });
+
+    var radioButtons2 = $('.radio-trigger2');
+
+    function resetAllRadioButtons2() {
+      $(radioButtons2).each(function (i, obj) {
+        var input = $('input', $(obj));
+        var label = $('label', $(obj));
+        $(label).removeClass('active');
+        // $(input).removeAttr('checked');
+      });
+    }
+
+    $(radioButtons2).on('click', function () {
+      var input = $('input', $(this));
+      var label = $('label', $(this));
+      resetAllRadioButtons2();
+      $(input).attr('checked', "true");
+      $(label).addClass('active');
+    });
+
+    var radioButtonsNo = $('.not1');
+
+    $(radioButtonsNo).on('click', function () {
+      var input = $('input', $(this));
+      var label = $('label', $(this));
+      $(input).attr('checked', "true");
+      $(label).addClass('active');
+    });
+
   });
   // if ($(' input:checked')) {
   //

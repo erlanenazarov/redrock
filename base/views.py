@@ -98,3 +98,10 @@ def things_one(request, things_id):
 
 def contacts(request):
     return render_to_response('contacts.html')
+
+
+def tour(request, tour_id):
+    context = {
+        'tour': Tour.objects.get(id=tour_id)
+    }
+    return render_to_response('tour.html', context=context)

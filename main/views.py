@@ -49,5 +49,11 @@ def post_planner(request):
             for i in request.POST.getlist('hotel'):
                 if i != '':
                     trip.transport = i
+            for i in request.POST.getlist('f'):
+                if i != '':
+                    trip.food = i
+            for i in request.POST.getlist('tour-cat'):
+                if i != '':
+                    trip.category_of_tour = i
             trip.save()
     return render_to_response('thanks.html')

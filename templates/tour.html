@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container">
+        <div class="title">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <h1>{{ tour.title }}</h1>
+                <p>{{ tour.short_description }}</p>
+                <div class="icons velo2"><img src="{{ tour.category.icon.url }}" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid tdescr">
+        <div class="container">
+            <div class="tour-description">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <ul>
+                        <li>{{ tour.initial }} - {{ tour.final }}</li>
+                        <li>{{ tour.days }} days</li>
+                        <li>Breakfast</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <ul>
+                        <li>Transfer</li>
+                        <li>Bike</li>
+                        <li>Visa</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-md-6 col-sm-6 col-xs-12 dwn1">
+                        <div class="col-sm-3 col-md-3 col-xs-6 dwn"><img src="{% static 'img/pdf.png' %}" alt=""></div>
+                        <div class="col-sm-9 col-md-9 col-xs-6 dwn">
+                            <div class="download">Learn more about this tour</div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 buts">
+                        <form action="" class="gomorebut">
+                            <a href="/trip_planner/">
+                                <button type="button" class="cbk singt1"><span class="plus">+</span> GO ON TOUR</button>
+                            </a>
+                            <a href="/contacts/">
+                                <button type="button" class="cbk singt2">ANY QUESTIONS?</button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid block1">
+    <div class="row">
+        <div class="container sblock1">
+                    {{ tour.text|safe }}
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid comments1">
+        <div class="container">
+            <div class="comments">
+                <div class="col-md-1 col-sm-1 col-xs-4">COMMENTS</div>
+                <div class="col-md-11 col-sm-11 col-xs-8 count">4</div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid comments12">
+        <div class="container">
+            <div class="comments2">
+                <div class="col-md-2 col-sm-2 col-xs-12 excomm"><img src="{% static 'img/comim.png' %}" alt=""></div>
+                <div class="col-md-10 col-sm-10 col-xs-12 excomm">
+                    <div class="col-md-12 col-sm-12 col-xs-12 auth">
+                        <div class="col-md-6 col-sm-6 col-xs-6 aut">
+                            <h4 class="author">John Brown <img src="{% static 'img/facebook.png' %}" alt=""></h4></div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <h5 class="datime">5 days ago</h5></div>
+                    </div>
+                    <p class="comm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                    <button type="button" class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like</button>
+                    <button type="button" class="reply">Reply</button>
+                    <div class="inpcomment">
+                        <form action="" class="commbut">
+                            <textarea name="" id="" cols="30" rows="10" class="inptcomment" placeholder="Write your comment..."></textarea>
+                            <p>
+                                <button type="submit" class="entcomment">Submit</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

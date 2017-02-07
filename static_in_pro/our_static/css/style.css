@@ -927,6 +927,7 @@
 
     .items img {
       width: 100%;
+      height: 240px;
       padding: 0;
     }
 
@@ -937,7 +938,6 @@
       transition: .5s;
       position: relative;
       outline: none;
-      background-image: url(../img/g1.png);
       background-position: center;
       background-repeat: no-repeat;
     }
@@ -1015,6 +1015,7 @@
 
     .slider3 img {
       width: 100%;
+      height: 230px;
       padding: 3px;
     }
 
@@ -1080,7 +1081,6 @@
       margin-left: 5px;
       margin-right: 5px;
       height: 230px;
-      background-image: url(../img/g1.png);
       background-position: center;
       background-repeat: no-repeat;
     }

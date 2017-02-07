@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'contacts/$', 'base.views.contacts'),
     url(r'about_us/$', 'about_us.views.about'),
     url(r'tours/category/(?P<category_id>\d+)/$', 'base.views.tours_by_category'),
+    url(r'tour/(?P<tour_id>\d+)/$', 'base.views.tour'),
     url(r'gallery/$', 'media.views.gallery'),
     url(r'blog/$','blog.views.blog'),
     url(r'^redactor/', include('redactor.urls')),
