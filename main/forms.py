@@ -11,3 +11,8 @@ class TripForm(forms.Form):
     people = forms.IntegerField(required=False)
     countchildren = forms.IntegerField(required=False)
 
+
+class SubmitForm(forms.Form):
+    email = forms.EmailField(max_length=100,required=False)
+    phone = forms.CharField(max_length=100, required=False)
+    text = forms.Textarea()

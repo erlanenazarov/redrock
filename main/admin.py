@@ -3,10 +3,12 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib.auth.models import User, Group
 
-from main.models import Slider, Main, ThingsToDo, TripPlanner, Hotel
+from main.models import Slider, Main, ThingsToDo, TripPlanner, Hotel, FAQ
 
 admin.site.unregister(User)
 admin.site.unregister(Group)
+
+admin.site.register(FAQ)
 
 
 class SliderAdmin(admin.ModelAdmin):

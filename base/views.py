@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 
 from base.models import Tour, Category
 from blog.models import Blog
+from main.forms import SubmitForm
 from main.models import Slider, Main, ThingsToDo
 from media.models import Gallery
 
@@ -24,6 +25,7 @@ def down_up():
 def index(request):
     down_up()
     context = {
+        'form': SubmitForm,
         'media': Gallery.objects.all()[0:6],
         'tours': Tour.objects.all(),
         'blogs': Blog.objects.all(),
@@ -48,7 +50,7 @@ def index(request):
         context['slider'] = Slider.objects.all().order_by('-created_at')[1:4]
     except:
         pass
-    return render_to_response('index.html', context=context)
+    return render(request,'index.html', context=context)
 
 
 def things_to_do(request):

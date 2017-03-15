@@ -36,9 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand brnd" href="#"><img src="{% static 'img/logo.png' %}" alt="">
-                    <p class="logo">Kochevnik.kg</p>
-                    <p class="sublogo">Your personal airline</p>
+                <a class="navbar-brand brnd" href="/"><img src="{% static 'img/header-logo.png' %}" alt="">
                 </a>
             </div>
 
@@ -238,19 +236,23 @@
         <h1 class="todo">ANY QUESTIONS?</h1>
         <p class="ff sublogo">Fill the form below and get free consultation</p>
         <div class=" col-md-12 col-sm-12 col-xs-12 fillform">
-            <form action="submit">
-                <input type="text" placeholder="Phone" class="udata">
+            <form action="/submit/" method="POST">
+                {% csrf_token %}
+                <div class="container col-lg-offset-3 col-lg-6">
+                <input type="text" required placeholder="Phone" id="phone" name="phone" class="udata">
                 <p>
-                    <input type="text" placeholder="E-mail" class="udata">
+                    <input type="email" required placeholder="E-mail" class="udata" id="email" name="email">
                 </p>
-                <textarea class="fq" name="" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
+                <textarea class="fq" name="text" id="text" cols="30" rows="10" placeholder="Write your message"></textarea>
+            <input type="submit" class="smt1" value="Submit">
+                    </div>
             </form>
         </div>
     </div>
 </div>
 <div class="container-fluid ftr">
     <div class="container ftr1">
-        <div class="col-md-2 col-sm-4 col-xs-12 bord "><img src="{% static 'img/logo1.png' %}" alt=""></div>
+        <div class="col-md-2 col-sm-4 col-xs-12 bord "><img src="{% static 'img/header-logo.png' %}" alt=""></div>
         <div class="col-md-3 col-xs-4 col-sm-8 bord bord1">
             <div class="col-md-6 col-sm-6 col-xs-6">
                 <ul class="rbold">

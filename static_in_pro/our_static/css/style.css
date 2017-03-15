@@ -126,7 +126,7 @@
   padding-right: 25px;
   border: none;
   border-radius: 15px;
-  background: linear-gradient(to right, #E74524, #FC7B09);
+  background: linear-gradient(to right, #E74524, #E11D26);
   margin-right: 30px;
   margin-left: 30px;
   outline: none;
@@ -153,16 +153,27 @@
 }
 
 .brnd {
-  margin-top: -120px;
-  line-height: 0.7;
-  font-family: 'Raleway';
-  text-align: center;
+    margin-top: -30px;
+    margin-left: 70px;
+    height: 100%;
+    position: relative;
 }
 
-@media(max-width:767px) {
-  .brnd {
-    margin-top: -70px;
-  }
+.brnd:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 300px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: -1;
+}
+
+@media (max-width: 767px) {
+    .brnd {
+        margin-top: -70px;
+    }
 }
 
 .logo {
@@ -208,7 +219,7 @@
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #FC7B09;
+  color: #E11D26;
 }
 
 .navbar-default .navbar-nav > .active > a,
@@ -237,7 +248,7 @@
   display: block;
   width: 100%;
   height: 3px;
-  background: #FC7B09;
+  background: #E11D26;
   position: absolute;
   bottom: -2px;
   left: -50%;
@@ -543,7 +554,7 @@
       letter-spacing: 1.5px;
       font-family: RalewayExtraBold;
       background-color: transparent;
-      border: 1px solid #F89136;
+      border: 1px solid #E11D26;
       padding-bottom: 5px;
       padding-top: 5px;
       outline: none;
@@ -574,7 +585,7 @@
     .todo {
       text-align: center;
       font-family: 'Conv_GothamProBold';
-      color: #F89136;
+      color: #E11D26;
       font-size: 40px;
     }
 
@@ -1965,7 +1976,7 @@
       .count {
         margin-left: 40px;
         color: #fff;
-        background-color: #FC7B09;
+        background-color: #E11D26;
         border-radius: 10px;
         width: 40px;
         margin-top: -2px;
@@ -2047,7 +2058,7 @@
         height: 50px;
         margin-left: -75px;
         margin-top: -25px;
-        background: linear-gradient(to right, #E74524, #FC7B09);
+        background: linear-gradient(to right, #E74524, #E11D26);
         color: #fff;
         font-family: Raleway;
         font-size: 18px;
@@ -2737,7 +2748,7 @@
       .chooses:hover,
       .moreabout:hover {
         transition: .5s;
-        background-color: #FF7C00;
+        background-color: #E11D26;
       }
 
       .hbut1 {
@@ -3052,7 +3063,7 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: #FC7B09;
+        background: #E11D26;
         opacity: 0;
         transition: all .2s;
       }
@@ -3109,7 +3120,7 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: #FC7B09;
+        background: #E11D26;
         opacity: 0;
         transition: all .2s;
       }
@@ -3195,7 +3206,23 @@
         padding-bottom: 5px;
         border: none;
         border-radius: 15px;
-        background: linear-gradient(to right, #E74524, #FC7B09);
+        background: linear-gradient(to right, #E74524, #E11D26);
+        outline: none;
+        font-size: 11px;
+        font-family: RalewayExtraBold;
+        text-align: center;
+      }
+      .smt1 {
+        bottom: 0;
+        left: 50%;
+        color: #fff;
+        width: 120px;
+        height: 36px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: none;
+        border-radius: 15px;
+        background: linear-gradient(to right, #E74524, #E11D26);
         outline: none;
         font-size: 11px;
         font-family: RalewayExtraBold;
@@ -3287,7 +3314,7 @@
           padding-bottom: 5px;
           border: none;
           border-radius: 15px;
-          background: linear-gradient(to right, #E74524, #FC7B09);
+          background: linear-gradient(to right, #E54322, #E11D26);
           outline: none;
           font-size: 11px;
           font-family: RalewayExtraBold;

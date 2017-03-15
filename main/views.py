@@ -4,8 +4,8 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 
 from base.models import Tour
-from main.forms import TripForm
-from main.models import Hotel, TripPlanner
+from main.forms import TripForm, SubmitForm
+from main.models import Hotel, TripPlanner, FAQ
 
 
 def tripplaner(request):
@@ -56,4 +56,15 @@ def post_planner(request):
                 if i != '':
                     trip.category_of_tour = i
             trip.save()
+    return render_to_response('thanks.html')
+
+
+def post_faq(request):
+    if request.method == 'POST':
+        form = SubmitForm(request.POST or None)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            faq = FAQ.objects.create(phone=phone, email=email)
+            faq.save()
     return render_to_response('thanks.html')

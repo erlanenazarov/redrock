@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'post_planner/$', 'main.views.post_planner'),
     url(r'things_to_do/(?P<things_id>\d+)/$', 'base.views.things_one'),
     url(r'tours/$', 'base.views.tours'),
+    url(r'submit/$', 'main.views.post_faq'),
     url(r'contacts/$', 'base.views.contacts'),
     url(r'about_us/$', 'about_us.views.about'),
     url(r'tours/category/(?P<category_id>\d+)/$', 'base.views.tours_by_category'),

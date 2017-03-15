@@ -15,6 +15,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'category'
         verbose_name_plural = 'categories'
+
     name = models.CharField(max_length=100)
     description = models.TextField()
     icon = models.ImageField(upload_to=image_upload_to)
@@ -35,14 +36,14 @@ class Tour(models.Model):
                          upload_to=image_upload_to,
                          allow_image_upload=True,
                          allow_file_upload=True)
-    pdf = models.FileField(upload_to=image_upload_to,null=True, blank=True)
+    pdf = models.FileField(upload_to=image_upload_to, null=True, blank=True)
     down = models.BooleanField(default=True)
     initial = models.DateField()
     final = models.DateField()
     days = models.IntegerField(default=1)
     category = models.ForeignKey(Category)
-    created_at = models.DateTimeField(auto_now_add=True,null=True,blank=True)
-    updated_at = models.DateTimeField(auto_now=True,null=True,blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __unicode__(self):
         return self.title
@@ -56,8 +57,8 @@ class Comment(models.Model):
     tour = models.ForeignKey(Tour)
     author = models.CharField(max_length=100)
     text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True,null=True,blank=True)
-    updated_at = models.DateTimeField(auto_now=True,null=True,blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __unicode__(self):
         return self.author
