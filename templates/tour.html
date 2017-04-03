@@ -55,36 +55,42 @@
         </div>
         </div>
     </div>
-    <div class="container-fluid comments1">
+   <div class="container-fluid comments1">
         <div class="container">
             <div class="comments">
                 <div class="col-md-1 col-sm-1 col-xs-4">COMMENTS</div>
-                <div class="col-md-11 col-sm-11 col-xs-8 count">4</div>
+                <div class="col-md-11 col-sm-11 col-xs-8 count">{{ count }}</div>
             </div>
         </div>
     </div>
     <div class="container-fluid comments12">
         <div class="container">
             <div class="comments2">
-                <div class="col-md-2 col-sm-2 col-xs-12 excomm"><img src="{% static 'img/comim.png' %}" alt=""></div>
-                <div class="col-md-10 col-sm-10 col-xs-12 excomm">
-                    <div class="col-md-12 col-sm-12 col-xs-12 auth">
-                        <div class="col-md-6 col-sm-6 col-xs-6 aut">
-                            <h4 class="author">John Brown <img src="{% static 'img/facebook.png' %}" alt=""></h4></div>
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <h5 class="datime">5 days ago</h5></div>
+                {% for i in comments %}
+                    <div class="container">
+                    <div class="col-md-2 col-sm-2 col-xs-2 excomm">
+                        <img src="{% static 'img/comim.png' %}" alt=""></div>
+                    <div class="col-md-10 col-sm-10 col-xs-10 excomm">
+                        <div class="col-md-12 col-sm-12 col-xs-12 auth">
+                            <div class="col-md-6 col-sm-6 col-xs-6 aut">
+                                <h4 class="author">{{ i.author }}<img src="{% static 'img/facebook.png' %}" alt=""></h4>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <h5 class="datime">{{ i.date }}</h5></div>
+                        </div>
+                        <p class="comm">{{ i.text }}</p>
                     </div>
-                    <p class="comm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <button type="button" class="like"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like</button>
-                    <button type="button" class="reply">Reply</button>
-                    <div class="inpcomment">
-                        <form action="" class="commbut">
-                            <textarea name="" id="" cols="30" rows="10" class="inptcomment" placeholder="Write your comment..."></textarea>
-                            <p>
-                                <button type="submit" class="entcomment">Submit</button>
-                            </p>
-                        </form>
                     </div>
+                {% endfor %}
+                <div class="col-md-10 col-sm-10 col-xs-10 col-md-offset-2">
+
+                    <form action="/addcomment/{{ tour.id }}/" class="commbut" method="POST">
+                        {% csrf_token %}
+                        <textarea name="text" id="text" cols="30" rows="10" class="inptcomment"
+                                  placeholder="Write your comment..."></textarea>
+                        <input type="submit" class="entcomment" value="Submit">
+
+                    </form>
                 </div>
             </div>
         </div>

@@ -25,12 +25,16 @@
         <h1 class="todo">ANY QUESTIONS?</h1>
         <p class="ff sublogo">Fill the form below and get free consultation</p>
         <div class=" col-md-12 col-sm-12 col-xs-12 fillform">
-            <form action="submit">
-                <input type="text" placeholder="Phone" class="udata">
+            <form action="/submit/" method="POST">
+                {% csrf_token %}
+                <div class="container col-lg-offset-3 col-lg-6">
+                <input type="text" required placeholder="Phone" id="phone" name="phone" class="udata">
                 <p>
-                    <input type="text" placeholder="E-mail" class="udata">
+                    <input type="email" required placeholder="E-mail" class="udata" id="email" name="email">
                 </p>
-                <textarea class="fq" name="" id="" cols="30" rows="10" placeholder="Write your message"></textarea>
+                <textarea class="fq" name="text" id="text" cols="30" rows="10" placeholder="Write your message"></textarea>
+            <input type="submit" class="smt1" value="Submit">
+                    </div>
             </form>
         </div>
     </div>

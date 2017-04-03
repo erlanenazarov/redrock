@@ -7,7 +7,7 @@
         <div class="filter">
             <form action="">Type of tour
 
-                <select id="my_selection">
+                <select id="foo">
                     <option value="x" href="/tours/">All tours</option>
                     {% for i in categories %}
                         <option value="x" href="/tours/category/{{ i.id }}/">{{ i.name }}</option>
@@ -18,7 +18,8 @@
         <div class="pblock">
             {% for i in tours %}
                 {% if i.down == True %}
-                    <div class="col-md-3 col-sm-3 ph1 photos up photos1" style="background: url('{{ i.image.url }}')">
+                    <div class="col-md-3 col-sm-3 ph9 photos up photos1"
+                         style="background-image: url('{{ i.image.url }}')">
                         <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
                         <div class="pacpt">
                             <a href="/tour/{{ i.id }}/">
@@ -27,7 +28,8 @@
                         </div>
                     </div>
                 {% else %}
-                    <div class="col-md-3 col-sm-3  ph2 photos photos1" style="background: url('{{ i.image.url }}')">
+                    <div class="col-md-3 col-sm-3  ph9 photos photos1"
+                         style="background-image: url('{{ i.image.url }}');">
                         <div class="icons"><img src="{{ i.category.icon.url }}" alt=""></div>
                         <div class="pacpt">
 <a href="/tour/{{ i.id }}/">
@@ -39,4 +41,9 @@
         </div>
     </div>
 </div>
+<script>
+document.getElementById('foo').onchange = function() {
+    window.location.href = this.children[this.selectedIndex].getAttribute('href');
+}
+</script>
 {% endblock %}

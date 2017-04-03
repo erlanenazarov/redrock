@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from blog.models import Blog, Images
+from blog.models import Blog, Images, Comment
 
 
 class ImageInline(admin.StackedInline):
@@ -21,5 +21,5 @@ class BlogAdmin(admin.ModelAdmin):
     # icon.allow_tags = True
     inlines = [ImageInline]
 
-
+admin.site.register(Comment)
 admin.site.register(Blog,BlogAdmin)

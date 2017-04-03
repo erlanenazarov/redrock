@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.shortcuts import render_to_response
 
-from base.models import Tour, Category
+from base.models import Tour, Category, Comment
+from blog.forms import CommentForm
 from blog.models import Blog
 from main.forms import SubmitForm
 from main.models import Slider, Main, ThingsToDo
@@ -50,12 +51,13 @@ def index(request):
         context['slider'] = Slider.objects.all().order_by('-created_at')[1:4]
     except:
         pass
-    return render(request,'index.html', context=context)
+    return render(request, 'index.html', context=context)
 
 
 def things_to_do(request):
     down_up()
     context = {
+        'form': SubmitForm,
         'tours': ThingsToDo.objects.all()[0:9]
     }
     return render_to_response('things_to_do.html', context=context)
@@ -104,6 +106,19 @@ def contacts(request):
 
 def tour(request, tour_id):
     context = {
-        'tour': Tour.objects.get(id=tour_id)
+        'tour': Tour.objects.get(id=tour_id),
+        'form': CommentForm,
+        'count': Comment.objects.filter(tour_id=tour_id).count(),
+        'comments': Comment.objects.filter(tour_id=tour_id).order_by('-date')
     }
-    return render_to_response('tour.html', context=context)
+    return render(request, 'tour.html', context=context)
+
+
+def addcomment(request, tour_id):
+    if request.method == 'POST':
+        form = CommentForm(request.POST or None)
+        if form.is_valid():
+            text = form.cleaned_data['text']
+            faq = Comment.objects.create(text=text, tour_id=tour_id)
+            faq.save()
+    return redirect(u'/tour/{0:s}/'.format(tour_id))

@@ -55,10 +55,9 @@ class Comment(models.Model):
         verbose_name_plural = 'Comments'
 
     tour = models.ForeignKey(Tour)
-    author = models.CharField(max_length=100)
+    author = models.CharField(max_length=100, default="Anonymous")
     text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __unicode__(self):
         return self.author

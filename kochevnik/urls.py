@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 
 from kochevnik import settings
@@ -21,6 +22,8 @@ from kochevnik import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'things_todo/$', 'base.views.things_to_do'),
+    url(r'submitcomment/$', 'blog.views.addcomment'),
+    url(r'addcomment/(?P<tour_id>\d+)/$', 'base.views.addcomment'),
     url(r'trip_planner/$', 'main.views.tripplaner'),
     url(r'post_planner/$', 'main.views.post_planner'),
     url(r'things_to_do/(?P<things_id>\d+)/$', 'base.views.things_one'),
@@ -38,3 +41,7 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'$', 'base.views.index'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
